@@ -3,24 +3,25 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { ApiService } from '../services/api.service';
 
 // TODO: Replace this with your own data model type
 export interface ProductsTableItem {
-  ProductName: string,
-  ProductShortCode: string,
-  Price: number,
-  Quantity: number,
-  CreatedDate: string
+  productName: string,
+  productShortCode: string,
+  price: number,
+  quantity: number,
+  createdDate: string
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: ProductsTableItem[] = [
-  {ProductName: 'Chair', ProductShortCode: 'chr', Price: 500, Quantity: 50, CreatedDate: new Date("2022-11-07").toDateString()},
-  {ProductName: 'Table', ProductShortCode: 'tb', Price: 1000, Quantity: 20, CreatedDate: new Date("2022-11-07").toDateString()},
-  {ProductName: 'Fan', ProductShortCode: 'fan', Price: 1200, Quantity: 10, CreatedDate: new Date("2022-11-07").toDateString()},
-  {ProductName: 'Bed', ProductShortCode: 'bed', Price: 10000, Quantity: 10, CreatedDate: new Date("2022-11-07").toDateString()},
-  {ProductName: 'TV', ProductShortCode: 'televison', Price: 5000, Quantity: 50, CreatedDate: new Date("2022-11-07").toDateString()},
-  {ProductName: 'Bag', ProductShortCode: 'bag', Price: 800, Quantity: 80, CreatedDate: new Date("2022-11-07").toDateString()}
+  {productName: 'Chair', productShortCode: 'chr', price: 500, quantity: 50, createdDate: new Date("2022-11-06").toDateString()},
+  {productName: 'Table', productShortCode: 'tb', price: 1000, quantity: 20, createdDate: new Date("2022-11-07").toDateString()},
+  {productName: 'Fan', productShortCode: 'fan', price: 1200, quantity: 10, createdDate: new Date("2022-11-04").toDateString()},
+  {productName: 'Bed', productShortCode: 'bed', price: 10000, quantity: 10, createdDate: new Date("2022-11-07").toDateString()},
+  {productName: 'TV', productShortCode: 'televison', price: 5000, quantity: 50, createdDate: new Date("2022-11-07").toDateString()},
+  {productName: 'Bag', productShortCode: 'bag', price: 800, quantity: 80, createdDate: new Date("2022-11-07").toDateString()}
 ];
 
 /**
@@ -86,11 +87,11 @@ export class ProductsTableDataSource extends DataSource<ProductsTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'ProductName': return compare(a.ProductName, b.ProductName, isAsc);
-        case 'ProductShortCode': return compare(a.ProductShortCode, b.ProductShortCode, isAsc);
-        case 'Price': return compare(+a.Price, +b.Price, isAsc);
-        case 'Quantity': return compare(+a.Quantity, +b.Quantity, isAsc);
-        case 'CreatedDate': return compare(a.CreatedDate, b.CreatedDate, isAsc);
+        case 'productName': return compare(a.productName, b.productName, isAsc);
+        case 'productShortCode': return compare(a.productShortCode, b.productShortCode, isAsc);
+        case 'price': return compare(+a.price, +b.price, isAsc);
+        case 'quantity': return compare(+a.quantity, +b.quantity, isAsc);
+        case 'createdDate': return compare(a.createdDate, b.createdDate, isAsc);
         default: return 0;
       }
     });

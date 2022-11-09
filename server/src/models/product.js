@@ -1,47 +1,49 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-    ProductName: {
+    productName: {
         type: String,
         minLength: 3,
         maxLength: 50,
         required: true
     },
-    ProductShortCode: {
+    productShortCode: {
         type: String,
         minLength: 3,
         maxLength: 50,
         required: true
     },
-    Category: {
+    category: {
         type: String,
         required: true
     },
-    Price: {
+    price: {
         type: Number,
         required: true
     },
-    Description: {
+    description: {
         type: String,
         minLength: 3,
         maxLength: 250
     },
-    ImageUrl: {
+    imageUrl: {
         type: String
     },
-    IsBestAchived: {
+    isBestAchived: {
         type: Boolean
     },
-    CreatedDate: {
-        type: Date
+    createdDate: {
+        type: Date,
+        required: true
     },
-    Origin: {
+    origin: {
         type: String,
         required: true
     },
-    Quantity: {
+    quantity: {
         type: Number,
-        min: 0
+        min: 0,
+        required: true
     }
 })
 
