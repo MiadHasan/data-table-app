@@ -1,4 +1,16 @@
-.full-width-table {
-  width: 80%;
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+// td, th {
+//   width: 25%;
+// }
+
+.product-table{
   margin: 20px auto;
 }

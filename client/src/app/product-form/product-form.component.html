@@ -1,4 +1,4 @@
-<h2>Create New Product</h2>
+<h2>{{createOrUpdate}} Product</h2>
 <form [formGroup]="productForm" class="form">
     <mat-form-field appearance="outline">
         <mat-label>Product Name</mat-label>
@@ -47,4 +47,4 @@
 	<input formControlName="imageUrl" type="file">
 	<mat-checkbox formControlName="isBestAchived">Best Achived</mat-checkbox>
 </form>
-<button mat-raised-button color="primary" (click)="createProduct()">Create Product</button>
+<button mat-raised-button color="primary" (click)="createProduct()">{{createOrUpdate}} Product</button>
