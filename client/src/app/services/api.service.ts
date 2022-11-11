@@ -11,7 +11,7 @@ export class ApiService {
   createNewProduct(data: any) {
     return this.http.post('http://localhost:3000/products/create', data);
   }
-  getProducts(data: any) {
+  getProducts(data: any = {}) {
     return this.http.post('http://localhost:3000/products', data);
   }
   getProductById(id: any) {
@@ -20,9 +20,23 @@ export class ApiService {
   deleteProduct(id: any) {
     return this.http.delete('http://localhost:3000/products', {
       params: new HttpParams().set('id', id)
-  });
+    });
   }
   updateProduct(data: any) {
     return this.http.put('http://localhost:3000/products', data);
+  }
+  getNumberOfProducts() {
+    return this.http.get('http://localhost:3000/products');
+  }
+  getCartProducts() {
+    return this.http.get('http://localhost:3000/cart');
+  }
+  updateCartProducts(data: any) {
+    return this.http.put('http://localhost:3000/cart', data);
+  }
+  checkExistence(id: any) {
+    return this.http.get('http://localhost:3000/cart', {
+      params: new HttpParams().set('id', id)
+    });
   }
 }

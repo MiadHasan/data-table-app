@@ -2,13 +2,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 h2{
     text-align: center;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
-button{
-  left: 45%;
+mat-form-field{
+  margin-bottom: 2px;
+  width: 300px;
+}
+
+mat-checkbox {
+  width: 300px;
+  font-size: 20px;
+  margin-bottom: 16px;
 }

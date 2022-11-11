@@ -2,11 +2,13 @@
 <form [formGroup]="productForm" class="form">
     <mat-form-field appearance="outline">
         <mat-label>Product Name</mat-label>
-        <input formControlName="productName" matInput required>
+        <input minlength="3" maxlength="50" formControlName="productName" matInput required>
+        <mat-hint>minlength 3 and maxlength 50</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Product Short Code</mat-label>
-        <input formControlName="productShortCode" matInput required>
+        <input minlength="3" maxlength="50" formControlName="productShortCode" matInput required>
+        <mat-hint>minlength 3 and maxlength 50</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
@@ -15,19 +17,24 @@
           <mat-option value="furniture">Furniture</mat-option>
           <mat-option value="food">Food</mat-option>
           <mat-option value="electronics">Electronics</mat-option>
+          <mat-option value="pet">Pet</mat-option>
+          <mat-option value="auto mobile">Auto Mobile</mat-option>
+          <mat-option value="jewellery">Jewellery</mat-option>
+          <mat-option value="toy">Toy</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Price</mat-label>
-        <input formControlName="price" matInput type="number" required>
+        <input formControlName="price" min="0" matInput type="number" required>
     </mat-form-field>
 	<mat-form-field appearance="outline">
         <mat-label>Quantity</mat-label>
-        <input formControlName="quantity" matInput type="number" required>
+        <input formControlName="quantity" min="1" matInput type="number" required>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea formControlName="description" matInput></textarea>
+        <textarea minlength="3" maxlength="250" formControlName="description" matInput></textarea>
+        <mat-hint>minlength 3 and maxlength 250</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Origin</mat-label>
@@ -36,15 +43,23 @@
           <mat-option value="cn">Canada</mat-option>
           <mat-option value="ind">India</mat-option>
           <mat-option value="eng">England</mat-option>
+          <mat-option value="usa">USA</mat-option>
+          <mat-option value="aus">Australia</mat-option>
+          <mat-option value="jap">Japan</mat-option>
+          <mat-option value="bz">Brazil</mat-option>
+          <mat-option value="uae">UAE</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Choose a date</mat-label>
-        <input matInput formControlName="createdDate" [matDatepicker]="picker">
+        <input matInput formControlName="createdDate" [max]="maxDate" [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-	<input formControlName="imageUrl" type="file">
+	<mat-form-field appearance="outline">
+        <mat-label>Image URL</mat-label>
+        <input formControlName="imageUrl" matInput>
+    </mat-form-field>
 	<mat-checkbox formControlName="isBestAchived">Best Achived</mat-checkbox>
+    <button mat-raised-button color="primary" (click)="createProduct()">{{createOrUpdate}} Product</button>
 </form>
-<button mat-raised-button color="primary" (click)="createProduct()">{{createOrUpdate}} Product</button>

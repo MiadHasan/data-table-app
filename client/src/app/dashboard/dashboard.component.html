@@ -1,1 +1,8 @@
-<p>dashboard works!</p>
+<div class="dash">
+    <app-card 
+        *ngFor="let product of productData"
+        [productInfo]="product"
+        (updateQuantity)="editQuantity($event)"
+    >
+    </app-card>
+</div>

@@ -20,6 +20,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   productForm !: FormGroup
   updateData: any = this.updateProduct.getData()
   createOrUpdate: string = 'Create';
+  maxDate = new Date();
 
   ngOnInit(): void {
     this.productForm = this.fb.group({

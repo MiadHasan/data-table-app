@@ -6,9 +6,10 @@ import { CartComponent } from './cart/cart.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent} ,
   { path: 'products', component: ProductComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'my-cart', component: CartComponent },
   { path: 'products/create', component: ProductFormComponent}
 ];
 

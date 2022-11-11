@@ -23,11 +23,17 @@ export class ProductsTableComponent implements OnInit {
     sortBy: '',
     sortDirection: '',
     start: 0,
-    size: 5
+    size: 10
   };
-
+  length !: number;
   ngOnInit(): void {
-    this.getRequiredProducts(this.sortAndSizeObj);
+    this.api.getNumberOfProducts().subscribe({
+      next: (res: any) => {
+        this.length = res.length;
+        this.getRequiredProducts(this.sortAndSizeObj);
+      }
+    });
+    
   }
   getRequiredProducts(data: any) {
     this.api.getProducts(data).subscribe({
@@ -62,13 +68,22 @@ export class ProductsTableComponent implements OnInit {
   }
 
   deleteProduct(id: any) {
-    this.api.deleteProduct(id).subscribe({
-      next: () => {
-        this.getRequiredProducts(this.sortAndSizeObj);
+    this.api.checkExistence(id).subscribe({
+      next: (res: any) => {
+        if (res.isPresent) {
+          alert('Cannot delete as product is added in the cart!')
+        } else {
+          this.api.deleteProduct(id).subscribe({
+            next: () => {
+              this.getRequiredProducts(this.sortAndSizeObj);
+            }
+          })
+        }
       }
-    })
+    }) 
   }
 
+  //Will try later
   // applyFilter(event: Event) {
   //   const filterValue = (event.target as HTMLInputElement).value;
   //   this.dataSource.filter = filterValue.trim().toLowerCase();

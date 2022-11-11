@@ -51,7 +51,7 @@
   <mat-paginator 
     (page)="changePage($event)"
     [pageSize]="sortAndSizeObj.size"
-    [length]="100"
-    [pageSizeOptions]="[5, 10, 25]" 
+    [length]="length"
+    [pageSizeOptions]="[2, 5, 10, 25]" 
     aria-label="Select page of users"></mat-paginator>
 </div>

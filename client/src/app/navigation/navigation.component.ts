@@ -22,7 +22,7 @@ export class NavigationComponent implements OnInit {
   }
 
   gotoCart() {
-    this.route.navigate(['cart']);
+    this.route.navigate(['my-cart']);
   }
 
 }
